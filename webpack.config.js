@@ -6,10 +6,8 @@ module.exports = {
     filename: `bundle.js`,
     path: path.join(__dirname, `public`)
   },
-  devServer: {
-    contentBase: path.join(__dirname, `public`),
-    compress: false,
-    port: 8000,
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
   },
   module: {
     rules: [
@@ -21,6 +19,11 @@ module.exports = {
         },
       }
     ],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, `public`),
+    compress: false,
+    port: 8000,
   },
   devtool: `source-map`
 };
