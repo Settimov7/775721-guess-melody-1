@@ -6,7 +6,7 @@ import {Welcome} from "./welcome";
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`App correctly renders after relaunch`, () => {
+it(`Welcome correctly triggered click event `, () => {
   const props = {
     time: 5,
     errorsCount: 3,

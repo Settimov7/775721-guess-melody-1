@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import {App} from "./app";
 
-it(`Welcome correctly renders`, () => {
+it(`App correctly renders`, () => {
   const props = {
     gameTime: 5,
     errorsCount: 3,
