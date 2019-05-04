@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 
 import {App} from "./components/app/app";
 
@@ -9,7 +9,7 @@ const settings = {
 };
 
 const init = () => {
-  ReactDOM.render(<App {...settings} />, document.querySelector(`.main`));
+  render(<App {...settings} />, document.querySelector(`.main`));
 };
 
 init();
