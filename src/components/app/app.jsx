@@ -5,6 +5,7 @@ import {Welcome} from "../welcome/welcome";
 
 export const App = (props) => {
   const {gameTime, errorsCount} = props;
+
   return (
     <Welcome time={gameTime} errorsCount={errorsCount} />
   );
