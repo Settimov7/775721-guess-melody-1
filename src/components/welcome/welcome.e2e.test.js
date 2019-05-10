@@ -9,7 +9,7 @@ it(`Welcome correctly triggered click event `, () => {
     errorsCount: 3,
   };
   const clickHandler = jest.fn();
-  const app = shallow(<Welcome {...props} onClick={clickHandler}/>);
+  const app = shallow(<Welcome {...props} onStartButtonClick={clickHandler}/>);
   const startButton = app.find(`button`);
 
   startButton.simulate(`click`);
