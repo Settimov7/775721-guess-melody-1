@@ -29,7 +29,15 @@ it(`Genre question screen correctly renders`, () => {
     onAnswer: jest.fn()
   };
 
-  const tree = renderer.create(<GenreQuestionScreen {...props} />).toJSON();
+  const createNodeMock = () => {
+    return {
+      focus() {
+        return true;
+      }
+    };
+  };
+
+  const tree = renderer.create(<GenreQuestionScreen {...props} />, {createNodeMock}).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

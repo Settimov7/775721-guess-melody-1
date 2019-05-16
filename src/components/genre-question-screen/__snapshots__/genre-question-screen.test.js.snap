@@ -92,14 +92,21 @@ exports[`Genre question screen correctly renders 1`] = `
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
         <div
-          className="track__status"
+          className="game__track"
         >
-          <audio />
+          <button
+            className="track__button track__button--play"
+            onClick={[Function]}
+            type="button"
+          />
+          <div
+            className="track__status"
+          >
+            <audio
+              src="path.mp3"
+            />
+          </div>
         </div>
         <div
           className="game__answer"
@@ -122,14 +129,21 @@ exports[`Genre question screen correctly renders 1`] = `
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
         <div
-          className="track__status"
+          className="game__track"
         >
-          <audio />
+          <button
+            className="track__button track__button--play"
+            onClick={[Function]}
+            type="button"
+          />
+          <div
+            className="track__status"
+          >
+            <audio
+              src="path.mp3"
+            />
+          </div>
         </div>
         <div
           className="game__answer"
@@ -152,14 +166,21 @@ exports[`Genre question screen correctly renders 1`] = `
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
         <div
-          className="track__status"
+          className="game__track"
         >
-          <audio />
+          <button
+            className="track__button track__button--play"
+            onClick={[Function]}
+            type="button"
+          />
+          <div
+            className="track__status"
+          >
+            <audio
+              src="path.mp3"
+            />
+          </div>
         </div>
         <div
           className="game__answer"
@@ -182,14 +203,21 @@ exports[`Genre question screen correctly renders 1`] = `
       <div
         className="track"
       >
-        <button
-          className="track__button track__button--play"
-          type="button"
-        />
         <div
-          className="track__status"
+          className="game__track"
         >
-          <audio />
+          <button
+            className="track__button track__button--play"
+            onClick={[Function]}
+            type="button"
+          />
+          <div
+            className="track__status"
+          >
+            <audio
+              src="path.mp3"
+            />
+          </div>
         </div>
         <div
           className="game__answer"

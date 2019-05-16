@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import {Player} from "../player/player";
 
 export const ArtistQuestionScreen = ({question, onAnswer}) => {
-  const {answers} = question;
+  const {answers, song} = question;
 
   return (
     <section className="game game--artist">
@@ -36,10 +37,8 @@ export const ArtistQuestionScreen = ({question, onAnswer}) => {
 
       <section className="game__screen">
         <h2 className="game__title">Кто исполняет эту песню?</h2>
-        <div className="game__track">
-          <button className="track__button track__button--play" type="button"/>
-          <audio/>
-        </div>
+
+        <Player src={song.src}/>
 
         <form
           className="game__artist"
@@ -70,6 +69,9 @@ ArtistQuestionScreen.propTypes = {
       picture: PropTypes.string.isRequired,
       artist: PropTypes.string.isRequired,
     })).isRequired,
+    song: PropTypes.shape({
+      src: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   onAnswer: PropTypes.func.isRequired,
 };
