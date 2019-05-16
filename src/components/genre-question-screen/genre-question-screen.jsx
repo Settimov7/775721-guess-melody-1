@@ -1,73 +1,91 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-export const GenreQuestionScreen = ({question, onAnswer}) => {
-  const {genre, answers} = question;
+import {Player} from "../player/player";
 
-  return (
-    <section className="game game--genre">
-      <header className="game__header">
-        <a className="game__back" href="#">
-          <span className="visually-hidden">Сыграть ещё раз</span>
-          <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
-        </a>
+export class GenreQuestionScreen extends React.PureComponent {
+  constructor(props) {
+    super(props);
 
-        <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
-          <circle className="timer__line" cx="390" cy="390" r="370"
-            style={{
-              filter: `url(#blur)`,
-              transform: `rotate(-90deg) scaleY(-1)`,
-              transformOrigin: `center`
-            }}/>
-        </svg>
+    this.state = {
+      activePlayerIndex: null,
+    };
+  }
 
-        <div className="timer__value" xmlns="http://www.w3.org/1999/xhtml">
-          <span className="timer__mins">05</span>
-          <span className="timer__dots">:</span>
-          <span className="timer__secs">00</span>
-        </div>
+  render() {
+    const {question, onAnswer} = this.props;
+    const {genre, answers} = question;
+    const {activePlayerIndex} = this.state;
 
-        <div className="game__mistakes">
-          <div className="wrong"/>
-          <div className="wrong"/>
-          <div className="wrong"/>
-        </div>
-      </header>
+    return (
+      <section className="game game--genre">
+        <header className="game__header">
+          <a className="game__back" href="#">
+            <span className="visually-hidden">Сыграть ещё раз</span>
+            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
+          </a>
 
-      <section className="game__screen">
-        <h2 className="game__title">Выберите {genre} треки</h2>
-        <form
-          className="game__tracks"
-          onSubmit={(evt) => {
-            evt.preventDefault();
+          <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
+            <circle className="timer__line" cx="390" cy="390" r="370"
+              style={{
+                filter: `url(#blur)`,
+                transform: `rotate(-90deg) scaleY(-1)`,
+                transformOrigin: `center`
+              }}/>
+          </svg>
 
-            onAnswer();
-          }}
-        >
-          {
-            answers.map((answer, index) => (
-              <div
-                key={answer.src + index}
-                className="track"
-              >
-                <button className="track__button track__button--play" type="button"/>
-                <div className="track__status">
-                  <audio/>
+          <div className="timer__value" xmlns="http://www.w3.org/1999/xhtml">
+            <span className="timer__mins">05</span>
+            <span className="timer__dots">:</span>
+            <span className="timer__secs">00</span>
+          </div>
+
+          <div className="game__mistakes">
+            <div className="wrong"/>
+            <div className="wrong"/>
+            <div className="wrong"/>
+          </div>
+        </header>
+
+        <section className="game__screen">
+          <h2 className="game__title">Выберите {genre} треки</h2>
+          <form
+            className="game__tracks"
+            onSubmit={(evt) => {
+              evt.preventDefault();
+
+              onAnswer();
+            }}
+          >
+            {
+              answers.map(({src}, index) => (
+                <div
+                  key={index}
+                  className="track"
+                >
+                  <Player
+                    src={src}
+                    isPlaying={activePlayerIndex === index}
+                    onPlayerButtonClick={() => this.setState({
+                      activePlayerIndex: this.state.activePlayerIndex === index ? null : index,
+                    })}
+                  />
+
+                  <div className="game__answer">
+                    <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${index}`}
+                      id={`answer-${index}`} />
+                    <label className="game__check" htmlFor={`answer-${index}`}>Отметить</label>
+                  </div>
                 </div>
-                <div className="game__answer">
-                  <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${index}`}
-                    id={`answer-${index}`} />
-                  <label className="game__check" htmlFor={`answer-${index}`}>Отметить</label>
-                </div>
-              </div>
-            ))
-          }
-          <button className="game__submit button" type="submit">Ответить</button>
-        </form>
+              ))
+            }
+            <button className="game__submit button" type="submit">Ответить</button>
+          </form>
+        </section>
       </section>
-    </section>
-  );
-};
+    );
+  }
+}
 
 GenreQuestionScreen.propTypes = {
   question: PropTypes.shape({

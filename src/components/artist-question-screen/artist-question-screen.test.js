@@ -20,11 +20,22 @@ it(`Artist question screen correctly renders`, () => {
           artist: `Jim Beam`,
         },
       ],
+      song: {
+        src: `path.mp3`,
+      },
     },
     onAnswer: jest.fn()
   };
 
-  const tree = renderer.create(<ArtistQuestionScreen {...props} />).toJSON();
+  const createNodeMock = () => {
+    return {
+      focus() {
+        return true;
+      }
+    };
+  };
+
+  const tree = renderer.create(<ArtistQuestionScreen {...props} />, {createNodeMock}).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
