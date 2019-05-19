@@ -6,6 +6,7 @@ import {App} from "./app";
 const mock = {
   questions: [
     {
+      id: 1,
       type: `genre`,
       genre: `rock`,
       answers: [
@@ -28,6 +29,7 @@ const mock = {
       ],
     },
     {
+      id: 2,
       type: `artist`,
       song: {
         artist: `Jim Beam`,
@@ -56,8 +58,13 @@ it(`App correctly renders`, () => {
     questions: mock.questions,
     settings: {
       gameTime: 5,
-      errorsCount: 3,
+      maxErrors: 3,
     },
+    currentQuestionIndex: -1,
+    errorsCount: 0,
+    onStartButtonClick: () => {},
+    onUserAnswer: () => {},
+    reset: () => {},
   };
   const tree = renderer.create(<App {...props} />).toJSON();
 

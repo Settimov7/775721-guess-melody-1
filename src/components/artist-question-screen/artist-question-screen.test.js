@@ -6,6 +6,7 @@ import {ArtistQuestionScreen} from "./artist-question-screen";
 it(`Artist question screen correctly renders`, () => {
   const props = {
     question: {
+      id: 1,
       answers: [
         {
           picture: `path.jpg`,

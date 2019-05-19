@@ -2,248 +2,177 @@
 
 exports[`Genre question screen correctly renders 1`] = `
 <section
-  className="game game--genre"
+  className="game__screen"
 >
-  <header
-    className="game__header"
+  <h2
+    className="game__title"
   >
-    <a
-      className="game__back"
-      href="#"
-    >
-      <span
-        className="visually-hidden"
-      >
-        Сыграть ещё раз
-      </span>
-      <img
-        alt="Угадай мелодию"
-        className="game__logo"
-        src="img/melody-logo-ginger.png"
-      />
-    </a>
-    <svg
-      className="timer"
-      viewBox="0 0 780 780"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        className="timer__line"
-        cx="390"
-        cy="390"
-        r="370"
-        style={
-          Object {
-            "filter": "url(#blur)",
-            "transform": "rotate(-90deg) scaleY(-1)",
-            "transformOrigin": "center",
-          }
-        }
-      />
-    </svg>
+    Выберите 
+    rock
+     треки
+  </h2>
+  <form
+    className="game__tracks"
+    onSubmit={[Function]}
+  >
     <div
-      className="timer__value"
-      xmlns="http://www.w3.org/1999/xhtml"
+      className="track"
     >
-      <span
-        className="timer__mins"
+      <div
+        className="game__track"
       >
-        05
-      </span>
-      <span
-        className="timer__dots"
+        <button
+          className="track__button track__button--play"
+          onClick={[Function]}
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio
+            src="path.mp3"
+          />
+        </div>
+      </div>
+      <div
+        className="game__answer"
       >
-        :
-      </span>
-      <span
-        className="timer__secs"
-      >
-        00
-      </span>
+        <input
+          className="game__input visually-hidden"
+          id="answer-0"
+          name="answer"
+          onChange={[Function]}
+          type="checkbox"
+          value="answer-0"
+        />
+        <label
+          className="game__check"
+          htmlFor="answer-0"
+        >
+          Отметить
+        </label>
+      </div>
     </div>
     <div
-      className="game__mistakes"
+      className="track"
     >
       <div
-        className="wrong"
-      />
+        className="game__track"
+      >
+        <button
+          className="track__button track__button--play"
+          onClick={[Function]}
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio
+            src="path.mp3"
+          />
+        </div>
+      </div>
       <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
+        className="game__answer"
+      >
+        <input
+          className="game__input visually-hidden"
+          id="answer-1"
+          name="answer"
+          onChange={[Function]}
+          type="checkbox"
+          value="answer-1"
+        />
+        <label
+          className="game__check"
+          htmlFor="answer-1"
+        >
+          Отметить
+        </label>
+      </div>
     </div>
-  </header>
-  <section
-    className="game__screen"
-  >
-    <h2
-      className="game__title"
-    >
-      Выберите 
-      rock
-       треки
-    </h2>
-    <form
-      className="game__tracks"
-      onSubmit={[Function]}
+    <div
+      className="track"
     >
       <div
-        className="track"
+        className="game__track"
       >
+        <button
+          className="track__button track__button--play"
+          onClick={[Function]}
+          type="button"
+        />
         <div
-          className="game__track"
+          className="track__status"
         >
-          <button
-            className="track__button track__button--play"
-            onClick={[Function]}
-            type="button"
+          <audio
+            src="path.mp3"
           />
-          <div
-            className="track__status"
-          >
-            <audio
-              src="path.mp3"
-            />
-          </div>
-        </div>
-        <div
-          className="game__answer"
-        >
-          <input
-            className="game__input visually-hidden"
-            id="answer-0"
-            name="answer"
-            type="checkbox"
-            value="answer-0"
-          />
-          <label
-            className="game__check"
-            htmlFor="answer-0"
-          >
-            Отметить
-          </label>
         </div>
       </div>
       <div
-        className="track"
+        className="game__answer"
       >
-        <div
-          className="game__track"
+        <input
+          className="game__input visually-hidden"
+          id="answer-2"
+          name="answer"
+          onChange={[Function]}
+          type="checkbox"
+          value="answer-2"
+        />
+        <label
+          className="game__check"
+          htmlFor="answer-2"
         >
-          <button
-            className="track__button track__button--play"
-            onClick={[Function]}
-            type="button"
-          />
-          <div
-            className="track__status"
-          >
-            <audio
-              src="path.mp3"
-            />
-          </div>
-        </div>
+          Отметить
+        </label>
+      </div>
+    </div>
+    <div
+      className="track"
+    >
+      <div
+        className="game__track"
+      >
+        <button
+          className="track__button track__button--play"
+          onClick={[Function]}
+          type="button"
+        />
         <div
-          className="game__answer"
+          className="track__status"
         >
-          <input
-            className="game__input visually-hidden"
-            id="answer-1"
-            name="answer"
-            type="checkbox"
-            value="answer-1"
+          <audio
+            src="path.mp3"
           />
-          <label
-            className="game__check"
-            htmlFor="answer-1"
-          >
-            Отметить
-          </label>
         </div>
       </div>
       <div
-        className="track"
+        className="game__answer"
       >
-        <div
-          className="game__track"
+        <input
+          className="game__input visually-hidden"
+          id="answer-3"
+          name="answer"
+          onChange={[Function]}
+          type="checkbox"
+          value="answer-3"
+        />
+        <label
+          className="game__check"
+          htmlFor="answer-3"
         >
-          <button
-            className="track__button track__button--play"
-            onClick={[Function]}
-            type="button"
-          />
-          <div
-            className="track__status"
-          >
-            <audio
-              src="path.mp3"
-            />
-          </div>
-        </div>
-        <div
-          className="game__answer"
-        >
-          <input
-            className="game__input visually-hidden"
-            id="answer-2"
-            name="answer"
-            type="checkbox"
-            value="answer-2"
-          />
-          <label
-            className="game__check"
-            htmlFor="answer-2"
-          >
-            Отметить
-          </label>
-        </div>
+          Отметить
+        </label>
       </div>
-      <div
-        className="track"
-      >
-        <div
-          className="game__track"
-        >
-          <button
-            className="track__button track__button--play"
-            onClick={[Function]}
-            type="button"
-          />
-          <div
-            className="track__status"
-          >
-            <audio
-              src="path.mp3"
-            />
-          </div>
-        </div>
-        <div
-          className="game__answer"
-        >
-          <input
-            className="game__input visually-hidden"
-            id="answer-3"
-            name="answer"
-            type="checkbox"
-            value="answer-3"
-          />
-          <label
-            className="game__check"
-            htmlFor="answer-3"
-          >
-            Отметить
-          </label>
-        </div>
-      </div>
-      <button
-        className="game__submit button"
-        type="submit"
-      >
-        Ответить
-      </button>
-    </form>
-  </section>
+    </div>
+    <button
+      className="game__submit button"
+      type="submit"
+    >
+      Ответить
+    </button>
+  </form>
 </section>
 `;

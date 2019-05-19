@@ -10,7 +10,9 @@
     "start": "webpack-dev-server"
   },
   "jest": {
-    "setupFiles": ["<rootDir>/src/setupTests.js"]
+    "setupFiles": [
+      "<rootDir>/src/setupTests.js"
+    ]
   },
   "engines": {
     "node": "10"
@@ -35,6 +37,8 @@
   "dependencies": {
     "prop-types": "15.7.2",
     "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react-dom": "16.8.6",
+    "react-redux": "7.0.3",
+    "redux": "4.0.1"
   }
 }

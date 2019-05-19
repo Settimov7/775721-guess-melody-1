@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as PropTypes from "prop-types";
 
 export const Welcome = (props) => {
-  const {time, errorsCount, onStartButtonClick} = props;
+  const {time, maxErrors, onStartButtonClick} = props;
 
   return (
     <section className="welcome">
@@ -19,7 +19,7 @@ export const Welcome = (props) => {
       <p className="welcome__text">Правила просты:</p>
       <ul className="welcome__rules-list">
         <li>За {time} минут нужно ответить на все вопросы.</li>
-        <li>Можно допустить {errorsCount} ошибки.</li>
+        <li>Можно допустить {maxErrors} ошибки.</li>
       </ul>
       <p className="welcome__text">Удачи!</p>
     </section>
@@ -28,6 +28,6 @@ export const Welcome = (props) => {
 
 Welcome.propTypes = {
   time: PropTypes.number.isRequired,
-  errorsCount: PropTypes.number.isRequired,
+  maxErrors: PropTypes.number.isRequired,
   onStartButtonClick: PropTypes.func,
 };

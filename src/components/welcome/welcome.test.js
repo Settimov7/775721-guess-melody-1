@@ -6,7 +6,7 @@ import {Welcome} from "./welcome";
 it(`Welcome correctly renders`, () => {
   const props = {
     time: 5,
-    errorsCount: 3,
+    maxErrors: 3,
   };
 
   const tree = renderer.create(<Welcome {...props} />).toJSON();
