@@ -6,7 +6,7 @@ import {Welcome} from "./welcome";
 it(`Welcome correctly triggered click event `, () => {
   const props = {
     time: 5,
-    errorsCount: 3,
+    maxErrors: 3,
   };
   const clickHandler = jest.fn();
   const app = shallow(<Welcome {...props} onStartButtonClick={clickHandler}/>);

@@ -6,6 +6,7 @@ import {GenreQuestionScreen} from "./genre-question-screen";
 it(`Genre question screen correctly renders`, () => {
   const props = {
     question: {
+      id: 2,
       genre: `rock`,
       answers: [
         {

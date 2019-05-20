@@ -2,174 +2,101 @@
 
 exports[`Artist question screen correctly renders 1`] = `
 <section
-  className="game game--artist"
+  className="game__screen"
 >
-  <header
-    className="game__header"
+  <h2
+    className="game__title"
   >
-    <a
-      className="game__back"
-      href="#"
-    >
-      <span
-        className="visually-hidden"
-      >
-        Сыграть ещё раз
-      </span>
-      <img
-        alt="Угадай мелодию"
-        className="game__logo"
-        src="img/melody-logo-ginger.png"
-      />
-    </a>
-    <svg
-      className="timer"
-      viewBox="0 0 780 780"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle
-        className="timer__line"
-        cx="390"
-        cy="390"
-        r="370"
-        style={
-          Object {
-            "filter": "url(#blur)",
-            "transform": "rotate(-90deg) scaleY(-1)",
-            "transformOrigin": "center",
-          }
-        }
-      />
-    </svg>
+    Кто исполняет эту песню?
+  </h2>
+  <div
+    className="game__track"
+  >
+    <button
+      className="track__button track__button--play"
+      onClick={[Function]}
+      type="button"
+    />
     <div
-      className="timer__value"
-      xmlns="http://www.w3.org/1999/xhtml"
+      className="track__status"
     >
-      <span
-        className="timer__mins"
-      >
-        05
-      </span>
-      <span
-        className="timer__dots"
-      >
-        :
-      </span>
-      <span
-        className="timer__secs"
-      >
-        00
-      </span>
-    </div>
-    <div
-      className="game__mistakes"
-    >
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
+      <audio
+        src="path.mp3"
       />
     </div>
-  </header>
-  <section
-    className="game__screen"
+  </div>
+  <form
+    className="game__artist"
   >
-    <h2
-      className="game__title"
-    >
-      Кто исполняет эту песню?
-    </h2>
     <div
-      className="game__track"
+      className="artist"
     >
-      <button
-        className="track__button track__button--play"
+      <input
+        className="artist__input visually-hidden"
+        id="artist-0"
+        name="answer"
         onClick={[Function]}
-        type="button"
+        type="radio"
+        value="artist-0"
       />
-      <div
-        className="track__status"
+      <label
+        className="artist__name"
+        htmlFor="artist-0"
       >
-        <audio
-          src="path.mp3"
+        <img
+          alt="John Snow"
+          className="artist__picture"
+          src="path.jpg"
         />
-      </div>
+        John Snow
+      </label>
     </div>
-    <form
-      className="game__artist"
-      onChange={[MockFunction]}
+    <div
+      className="artist"
     >
-      <div
-        className="artist"
+      <input
+        className="artist__input visually-hidden"
+        id="artist-1"
+        name="answer"
+        onClick={[Function]}
+        type="radio"
+        value="artist-1"
+      />
+      <label
+        className="artist__name"
+        htmlFor="artist-1"
       >
-        <input
-          className="artist__input visually-hidden"
-          id="artist-0"
-          name="answer"
-          type="radio"
-          value="artist-0"
+        <img
+          alt="Jack Daniels"
+          className="artist__picture"
+          src="path.jpg"
         />
-        <label
-          className="artist__name"
-          htmlFor="artist-0"
-        >
-          <img
-            alt="John Snow"
-            className="artist__picture"
-            src="path.jpg"
-          />
-          John Snow
-        </label>
-      </div>
-      <div
-        className="artist"
+        Jack Daniels
+      </label>
+    </div>
+    <div
+      className="artist"
+    >
+      <input
+        className="artist__input visually-hidden"
+        id="artist-2"
+        name="answer"
+        onClick={[Function]}
+        type="radio"
+        value="artist-2"
+      />
+      <label
+        className="artist__name"
+        htmlFor="artist-2"
       >
-        <input
-          className="artist__input visually-hidden"
-          id="artist-1"
-          name="answer"
-          type="radio"
-          value="artist-1"
+        <img
+          alt="Jim Beam"
+          className="artist__picture"
+          src="path.jpg"
         />
-        <label
-          className="artist__name"
-          htmlFor="artist-1"
-        >
-          <img
-            alt="Jack Daniels"
-            className="artist__picture"
-            src="path.jpg"
-          />
-          Jack Daniels
-        </label>
-      </div>
-      <div
-        className="artist"
-      >
-        <input
-          className="artist__input visually-hidden"
-          id="artist-2"
-          name="answer"
-          type="radio"
-          value="artist-2"
-        />
-        <label
-          className="artist__name"
-          htmlFor="artist-2"
-        >
-          <img
-            alt="Jim Beam"
-            className="artist__picture"
-            src="path.jpg"
-          />
-          Jim Beam
-        </label>
-      </div>
-    </form>
-  </section>
+        Jim Beam
+      </label>
+    </div>
+  </form>
 </section>
 `;
