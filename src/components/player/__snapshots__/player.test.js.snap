@@ -6,15 +6,14 @@ exports[`Player correctly renders 1`] = `
 >
   <button
     className="track__button track__button--play"
-    onClick={[Function]}
+    disabled={false}
+    onClick={[MockFunction]}
     type="button"
   />
   <div
     className="track__status"
   >
-    <audio
-      src="path.mp3"
-    />
+    <audio />
   </div>
 </div>
 `;

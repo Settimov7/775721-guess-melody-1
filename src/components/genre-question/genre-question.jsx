@@ -2,25 +2,18 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
 import {Player} from "../player/player";
+import {withAudio} from "../../hocs/with-audio/with-audio";
 
-export class GenreQuestionScreen extends React.PureComponent {
+const AudioPlayer = withAudio(Player);
+
+export class GenreQuestion extends React.PureComponent {
   constructor(props) {
     super(props);
-
-    const answersLength = this.props.question.answers.length;
-
-    this.state = {
-      activePlayerIndex: null,
-      answer: new Array(answersLength).fill(false),
-    };
-
-    this._onPlayerButtonHandler = this._onPlayerButtonHandler.bind(this);
   }
 
   render() {
-    const {question, onAnswer} = this.props;
+    const {question, onAnswer, activePlayerIndex, onPlayerButtonClick, onChangeUserAnswer} = this.props;
     const {genre, answers} = question;
-    const {activePlayerIndex, answer} = this.state;
 
     return (
       <section className="game__screen">
@@ -30,7 +23,7 @@ export class GenreQuestionScreen extends React.PureComponent {
           onSubmit={(evt) => {
             evt.preventDefault();
 
-            onAnswer(answer);
+            onAnswer();
           }}
         >
           {
@@ -39,10 +32,10 @@ export class GenreQuestionScreen extends React.PureComponent {
                 key={index}
                 className="track"
               >
-                <Player
+                <AudioPlayer
                   src={src}
                   isPlaying={activePlayerIndex === index}
-                  onPlayerButtonClick={() => this._onPlayerButtonHandler(index)}
+                  onPlayerButtonClick={() => onPlayerButtonClick(index)}
                 />
 
                 <div className="game__answer">
@@ -52,7 +45,7 @@ export class GenreQuestionScreen extends React.PureComponent {
                     name="answer"
                     value={`answer-${index}`}
                     id={`answer-${index}`}
-                    onChange={() => this._onChangeInputHandler(index)}
+                    onChange={() => onChangeUserAnswer(index)}
                   />
                   <label className="game__check" htmlFor={`answer-${index}`}>Отметить</label>
                 </div>
@@ -64,24 +57,9 @@ export class GenreQuestionScreen extends React.PureComponent {
       </section>
     );
   }
-
-  _onPlayerButtonHandler(index) {
-    this.setState({
-      activePlayerIndex: this.state.activePlayerIndex === index ? null : index,
-    });
-  }
-
-  _onChangeInputHandler(index) {
-    const answer = [...this.state.answer];
-
-    answer[index] = !answer[index];
-    this.setState({
-      answer,
-    });
-  }
 }
 
-GenreQuestionScreen.propTypes = {
+GenreQuestion.propTypes = {
   question: PropTypes.shape({
     genre: PropTypes.oneOf([`rock`, `jazz`, `blues`, `pop`]).isRequired,
     answers: PropTypes.arrayOf(PropTypes.shape({
@@ -89,4 +67,7 @@ GenreQuestionScreen.propTypes = {
     })).isRequired,
   }).isRequired,
   onAnswer: PropTypes.func.isRequired,
+  activePlayerIndex: PropTypes.number,
+  onPlayerButtonClick: PropTypes.func,
+  onChangeUserAnswer: PropTypes.func,
 };
