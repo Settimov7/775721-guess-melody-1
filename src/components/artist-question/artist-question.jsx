@@ -1,15 +1,18 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {Player} from "../player/player";
+import {withAudio} from "../../hocs/with-audio/with-audio";
 
-export const ArtistQuestionScreen = ({question, onAnswer}) => {
+const AudioPlayer = withAudio(Player);
+
+export const ArtistQuestion = ({question, onAnswer}) => {
   const {answers, song} = question;
 
   return (
     <section className="game__screen">
       <h2 className="game__title">Кто исполняет эту песню?</h2>
 
-      <Player src={song.src}/>
+      <AudioPlayer src={song.src}/>
 
       <form
         className="game__artist"
@@ -38,7 +41,7 @@ export const ArtistQuestionScreen = ({question, onAnswer}) => {
   );
 };
 
-ArtistQuestionScreen.propTypes = {
+ArtistQuestion.propTypes = {
   question: PropTypes.shape({
     answers: PropTypes.arrayOf(PropTypes.shape({
       picture: PropTypes.string.isRequired,

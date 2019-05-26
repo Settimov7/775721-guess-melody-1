@@ -3,20 +3,17 @@ import renderer from 'react-test-renderer';
 
 import {Player} from "./player";
 
+const mockComponent = <audio />;
+
 it(`Player correctly renders`, () => {
   const props = {
-    src: `path.mp3`,
+    audio: mockComponent,
+    isLoading: false,
+    isPlaying: false,
+    onPlayerButtonClick: jest.fn(),
   };
 
-  const createNodeMock = () => {
-    return {
-      focus() {
-        return true;
-      }
-    };
-  };
+  const player = renderer.create(<Player{...props} />).toJSON();
 
-  const tree = renderer.create(<Player{...props} />, {createNodeMock}).toJSON();
-
-  expect(tree).toMatchSnapshot();
+  expect(player).toMatchSnapshot();
 });
