@@ -1,9 +1,9 @@
 import {
   reducer,
-  actionCreator,
+  ActionCreator,
   isArtistAnswerCorrect,
   isGenreAnswerCorrect,
-} from "./reducer";
+} from "./game";
 
 describe(`Business logic is correct`, () => {
   it(`Artist answer is checked correctly`, () => {
@@ -107,14 +107,14 @@ describe(`Business logic is correct`, () => {
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for incrementing step returns correct action`, () => {
-    expect(actionCreator.goToNextQuestion()).toEqual({
+    expect(ActionCreator.goToNextQuestion()).toEqual({
       type: `INCREMENT_CURRENT_QUESTION_INDEX`,
       payload: 1,
     });
   });
 
   it(`Action creator for incrementing mistake returns action with 0 payload if answer for artist is correct`, () => {
-    expect(actionCreator.checkUserAnswer({
+    expect(ActionCreator.checkUserAnswer({
       id: 2,
       type: `artist`,
       song: {
@@ -142,7 +142,7 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for incrementing mistake returns action with 1 payload if answer for artist is incorrect`, () => {
-    expect(actionCreator.checkUserAnswer({
+    expect(ActionCreator.checkUserAnswer({
       id: 2,
       type: `artist`,
       song: {
@@ -170,7 +170,7 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for incrementing mistake returns action with 0 payload if answer for genre is correct`, () => {
-    expect(actionCreator.checkUserAnswer({
+    expect(ActionCreator.checkUserAnswer({
       id: 2,
       type: `genre`,
       genre: `rock`,
@@ -199,7 +199,7 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for incrementing mistake returns action with 1 payload if answer for genre is incorrect`, () => {
-    expect(actionCreator.checkUserAnswer({
+    expect(ActionCreator.checkUserAnswer({
       id: 2,
       type: `genre`,
       genre: `rock`,
@@ -228,7 +228,7 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator resets state if user is answered incorrectly and there're no mistakes left`, () => {
-    expect(actionCreator.checkUserAnswer({
+    expect(ActionCreator.checkUserAnswer({
       id: 2,
       type: `genre`,
       genre: `rock`,
@@ -254,7 +254,7 @@ describe(`Action creators work correctly`, () => {
       type: `RESET_APP_STATE`,
     });
 
-    expect(actionCreator.checkUserAnswer({
+    expect(ActionCreator.checkUserAnswer({
       id: 2,
       type: `artist`,
       song: {
