@@ -8,7 +8,9 @@ import {GenreQuestion} from "../../components/genre-question/genre-question";
 import {withUserAnswer} from "../with-user-answer/with-user-answer";
 import {withActivePlayer} from "../with-active-player/with-active-player";
 import {Welcome} from "../../components/welcome/welcome";
-import {actionCreator} from "../../reducer";
+import {getQuestions} from '../../../src/reducer/data/selectors';
+import {getCurrentQuestionIndex, getErrorsCount} from '../../../src/reducer/game/selectors';
+import {ActionCreator} from "../../reducer/game/game";
 
 const WrappedGenreQuestion = withUserAnswer(withActivePlayer(GenreQuestion));
 
@@ -86,30 +88,7 @@ export const withScreenSwitch = (Component) => {
       gameTime: PropTypes.number.isRequired,
       maxErrors: PropTypes.number.isRequired,
     }).isRequired,
-    questions: PropTypes.arrayOf(PropTypes.oneOfType([
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        type: PropTypes.oneOf([`genre`]).isRequired,
-        genre: PropTypes.oneOf([`rock`, `jazz`, `blues`, `pop`]).isRequired,
-        answers: PropTypes.arrayOf(PropTypes.shape({
-          src: PropTypes.string.isRequired,
-          genre: PropTypes.oneOf([`rock`, `jazz`, `blues`, `pop`]).isRequired
-        })).isRequired
-      }),
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        type: PropTypes.oneOf([`artist`]).isRequired,
-        song: PropTypes.shape({
-          artist: PropTypes.string.isRequired,
-          src: PropTypes.string.isRequired
-        }).isRequired,
-        answers: PropTypes.arrayOf(PropTypes.shape({
-          picture: PropTypes.string.isRequired,
-          artist: PropTypes.string.isRequired
-        })).isRequired
-      }),
-    ]
-    )).isRequired,
+    questions: PropTypes.array.isRequired,
     currentQuestionIndex: PropTypes.number.isRequired,
     errorsCount: PropTypes.number.isRequired,
     onStartButtonClick: PropTypes.func.isRequired,
@@ -121,23 +100,24 @@ export const withScreenSwitch = (Component) => {
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  currentQuestionIndex: state.currentQuestionIndex,
-  errorsCount: state.errorsCount,
+  questions: getQuestions(state),
+  currentQuestionIndex: getCurrentQuestionIndex(state),
+  errorsCount: getErrorsCount(state),
 });
 
 
 const mapDispatchToProps = (dispatch) => ({
-  onStartButtonClick: () => dispatch(actionCreator.goToNextQuestion()),
+  onStartButtonClick: () => dispatch(ActionCreator.goToNextQuestion()),
   onUserAnswer: (userAnswer, question, errorsCount, maxErrors) => {
-    dispatch(actionCreator.goToNextQuestion());
-    dispatch(actionCreator.checkUserAnswer(
+    dispatch(ActionCreator.goToNextQuestion());
+    dispatch(ActionCreator.checkUserAnswer(
         userAnswer,
         question,
         errorsCount,
         maxErrors
     ));
   },
-  reset: () => dispatch(actionCreator.reset()),
+  reset: () => dispatch(ActionCreator.reset()),
 });
 
 export default compose(
