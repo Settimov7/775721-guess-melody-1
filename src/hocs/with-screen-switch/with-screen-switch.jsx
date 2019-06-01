@@ -11,6 +11,8 @@ import {Welcome} from "../../components/welcome/welcome";
 import {getQuestions} from '../../../src/reducer/data/selectors';
 import {getCurrentQuestionIndex, getErrorsCount} from '../../../src/reducer/game/selectors';
 import {ActionCreator} from "../../reducer/game/game";
+import AuthorizationScreen from "../../components/authorization-screen/authorization-screen";
+import {getIsAuthorizationRequired} from "../../reducer/user/selectors";
 
 const WrappedGenreQuestion = withUserAnswer(withActivePlayer(GenreQuestion));
 
@@ -55,9 +57,13 @@ export const withScreenSwitch = (Component) => {
     }
 
     render() {
-      const {settings, questions, currentQuestionIndex, onStartButtonClick, reset} = this.props;
+      const {settings, questions, currentQuestionIndex, onStartButtonClick, reset, isAuthorizationRequired} = this.props;
       const {gameTime, maxErrors} = settings;
       const question = this._currentQuestion;
+
+      if (isAuthorizationRequired) {
+        return <AuthorizationScreen />;
+      }
 
       if (!question) {
         if (currentQuestionIndex === questions.length) {
@@ -94,6 +100,7 @@ export const withScreenSwitch = (Component) => {
     onStartButtonClick: PropTypes.func.isRequired,
     onUserAnswer: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
+    isAuthorizationRequired: PropTypes.bool,
   };
 
   return WithScreenSwitch;
@@ -103,6 +110,7 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   questions: getQuestions(state),
   currentQuestionIndex: getCurrentQuestionIndex(state),
   errorsCount: getErrorsCount(state),
+  isAuthorizationRequired: getIsAuthorizationRequired(state),
 });
 
 

@@ -61,7 +61,7 @@ export class GenreQuestion extends React.PureComponent {
 
 GenreQuestion.propTypes = {
   question: PropTypes.shape({
-    genre: PropTypes.oneOf([`rock`, `jazz`, `blues`, `pop`]).isRequired,
+    genre: PropTypes.string.isRequired,
     answers: PropTypes.arrayOf(PropTypes.shape({
       src: PropTypes.string.isRequired,
     })).isRequired,
